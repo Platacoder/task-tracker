@@ -14,7 +14,7 @@ export class DataService {
   constructor(private _http: HttpClient) { }
 
   getExistingUsersData$(): Observable<Users[]> {
-    return this._http.get<Users[]>('localhost:4200/getUsers').pipe(
+    return this._http.get<Users[]>('http:localhost:4200/getUsers').pipe(
       map((data: Users[]) => {
         return data
       })

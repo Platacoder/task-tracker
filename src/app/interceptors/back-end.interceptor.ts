@@ -35,7 +35,6 @@ const mockUsersData: Users[] =
 @Injectable()
 export class BackendInterceptor implements HttpInterceptor {
     constructor(
-        private _injector: Injector
     ) {}
 
     

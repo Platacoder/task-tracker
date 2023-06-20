@@ -11,5 +11,5 @@ export interface Task {
     title: string;
     description: string;
     complete: boolean;
-    dateCompleted: Date;
+    dateCompleted: Date | null;
 }

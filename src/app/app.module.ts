@@ -7,6 +7,8 @@ import { ContentShellComponent } from './components/content-shell/content-shell.
 import { UserListComponent } from './components/user-list/user-list.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { NavBannerComponent } from './components/nav-banner/nav-banner.component';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { BackendInterceptor } from './interceptors/back-end.interceptor';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,17 @@ import { NavBannerComponent } from './components/nav-banner/nav-banner.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    HttpClient,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BackendInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
